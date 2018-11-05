@@ -1,0 +1,41 @@
+header {
+  height: 100%;
+  background-color: #32292f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-container {
+  position: absolute;
+  left: 40px;
+}
+
+.logo-container img {
+  height: 34px;
+  padding-top: 2px;
+}
+
+@media (max-width: 521px) {
+  .logo-container {
+    display: none;
+  }
+}
+
+@media (max-width: 1081px) {
+  .logo-container {
+    left: 80px;
+  }
+}
+
+select {
+  background-color: #32292f;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.header-subtitle {
+  font-weight: 100;
+  border-left: 2px solid #ccc;
+  padding-left: 10px;
+  margin-left: 10px;
+}

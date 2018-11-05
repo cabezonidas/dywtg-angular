@@ -1,0 +1,18 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+ul:empty {
+  animation: fade-in 2s;
+}
+ul:empty::before {
+  content: "LOADING";
+  font-size: 0.9em;
+}
+ul:empty::after {
+  content: "...";
+  font-size: 2em;
+  margin-left: 0.1em;
+  animation: pulse 2s infinite;
+}

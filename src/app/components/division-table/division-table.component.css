@@ -1,0 +1,45 @@
+table {
+  font-size: 14px;
+  width: 100%;
+  max-width: 30em;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+}
+tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+td,
+th {
+  padding: 1em;
+}
+td,
+th:nth-child(1),
+td,
+th:nth-child(2) {
+  text-align: left;
+}
+
+tbody:empty {
+  animation: fadeIn 2s;
+}
+tbody:empty::before {
+  content: "LOADING";
+  font-size: 0.9em;
+}
+tbody:empty::after {
+  content: "...";
+  font-size: 2em;
+  margin-left: 0.1em;
+  animation: pulse 2s infinite;
+}
+tbody tr {
+  animation: fadeIn 500ms;
+}
+tbody tr:nth-child(4) {
+  border-bottom: 4px solid white;
+}
+tbody tr.active {
+  background-color: var(--primary-colour);
+  font-weight: 900;
+}

@@ -1,0 +1,12 @@
+<li>
+  <p>{{formatDateToString(fixture.gameDate)}}</p>
+  <p>{{getTeamString(fixture)}}</p>
+  <div class="fixture-list-item__results" *ngIf="showResults">
+    <p>
+      {{getGameResultsData(fixture, currentTeamId)}}
+    </p>
+    <a *ngIf="fixture.highlightsLink" href="{{fixture.highlightsLink}}" target="_blank" rel="noopener noreferrer">
+      View highlights
+    </a>
+  </div>
+</li>

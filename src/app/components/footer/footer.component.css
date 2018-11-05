@@ -1,0 +1,38 @@
+footer {
+  background-color: #32292f;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #eae8ff;
+}
+a {
+  text-decoration: none;
+  color: #eae8ff;
+}
+a:hover {
+  color: white;
+}
+.fa-github {
+  margin-left: 0.25em;
+}
+@media (max-width: 630px) {
+  footer {
+    display: block;
+  }
+}
+
+section {
+  padding: 5px 0;
+  text-align: center;
+}
+
+@media (min-width: 631px) {
+  section:nth-child(1) {
+    text-align: left;
+  }
+  section:nth-child(3) {
+    text-align: right;
+  }
+}
