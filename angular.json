@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "canucks-hockey-angular": {
+    "dywtg-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/canucks-hockey-angular",
+            "outputPath": "dist/dywtg-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -45,18 +45,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "canucks-hockey-angular:build"
+            "browserTarget": "dywtg-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "canucks-hockey-angular:build:production"
+              "browserTarget": "dywtg-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "canucks-hockey-angular:build"
+            "browserTarget": "dywtg-angular:build"
           }
         },
         "test": {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "canucks-hockey-angular-e2e": {
+    "dywtg-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -88,11 +88,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "canucks-hockey-angular:serve"
+            "devServerTarget": "dywtg-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "canucks-hockey-angular:serve:production"
+              "devServerTarget": "dywtg-angular:serve:production"
             }
           }
         },
@@ -106,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "canucks-hockey-angular"
+  "defaultProject": "dywtg-angular"
 }
