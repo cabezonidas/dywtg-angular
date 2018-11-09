@@ -7,7 +7,7 @@
       <h2>
         <i class="far fa-calendar-alt"></i> Next Fixtures
       </h2>
-      <app-fixtures-list [fixtures]="nextFixtures"></app-fixtures-list>
+      <app-fixtures-list [fixtures]="nextFixtures$ | async"></app-fixtures-list>
     </section>
 
     <section class="panel panel-latest-results">

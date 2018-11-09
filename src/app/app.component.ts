@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { getDateForUrl } from "./common/helpers";
 import { ApiService } from "./services/api.service.js";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import ScheduleModifier from "./interfaces/schedule-modifier.interface";
 
 @Component({
   selector: "app-root",
@@ -10,7 +13,7 @@ import { ApiService } from "./services/api.service.js";
 export class AppComponent implements OnInit {
   title = "Did you watch the game?";
   selectedTeamId: number = 23;
-  nextFixtures: any[] = [];
+  nextFixtures$: Observable<any>;
   latestFixtures: any[] = [];
   divisionTeams: any[] = [];
   divisionName: string = "Division";
@@ -22,15 +25,6 @@ export class AppComponent implements OnInit {
     this.setUrlHash(teamId);
     this.selectedTeamId = teamId;
 
-    // Get the information for the selected team
-    this.getNextFixtures(
-      {
-        teamId: teamId,
-        startDate: getDateForUrl(),
-        endDate: getDateForUrl(1)
-      },
-      fixturesLimit
-    );
     this.getLatestFixtures(
       {
         teamId: teamId,
@@ -40,13 +34,16 @@ export class AppComponent implements OnInit {
       fixturesLimit
     );
     this.getDivisionTeams(teamId);
-  }
 
-  // Get the selected teams next fixtures
-  getNextFixtures(params, limit: number) {
-    this.api.getSchedule(params).subscribe(response => {
-      this.nextFixtures = response.dates.slice(0, limit);
-    });
+    const next = <ScheduleModifier> {
+      teamId: teamId,
+      startDate: getDateForUrl(),
+      endDate: getDateForUrl(1)
+    }
+
+    this.nextFixtures$ = this.api.getSchedule(next).pipe(
+      map(response => response.dates.slice(0, fixturesLimit))
+    )
   }
 
   // Get the selected teams recently played fixtures
