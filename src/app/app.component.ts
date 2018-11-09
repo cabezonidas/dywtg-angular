@@ -7,21 +7,17 @@ import { ApiService } from "./services/api.service.js";
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  providers: [ApiService]
 })
 export class AppComponent implements OnInit {
   title: string = "Did you watch the game?";
   teams: any[] = teams;
-  api;
   selectedTeamId: number = 23;
   nextFixtures: any[] = [];
   latestFixtures: any[] = [];
   divisionTeams: any[] = [];
   divisionName: string = "Division";
 
-  constructor(ApiService: ApiService) {
-    this.api = ApiService;
-  }
+  constructor(private api: ApiService) { }
 
   onSelectTeamChanged(teamId: number) {
     const fixturesLimit = 5;
