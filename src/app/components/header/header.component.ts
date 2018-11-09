@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
+import Teams from "src/app/teamsList";
 
 @Component({
   selector: "app-header",
@@ -10,6 +11,7 @@ export class HeaderComponent {
   selectedTeamId: number;
   @Output()
   teamChanged = new EventEmitter();
+  teams = Teams;
 
   constructor() {}
 
