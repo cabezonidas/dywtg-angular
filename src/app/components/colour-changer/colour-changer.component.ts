@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from "@angular/core";
+import Teams from "src/app/teamsList";
 
 @Component({
   selector: "app-colour-changer",
@@ -6,8 +7,6 @@ import { Component, OnChanges, Input } from "@angular/core";
   styleUrls: ["./colour-changer.component.css"]
 })
 export class ColourChangerComponent implements OnChanges {
-  @Input()
-  teams: any[];
   @Input()
   selectedTeamId;
 
@@ -35,7 +34,7 @@ export class ColourChangerComponent implements OnChanges {
     if (!this.selectedTeamId) {
       return;
     }
-    let team = this.teams[this.selectedTeamId];
+    let team = Teams[this.selectedTeamId];
     if (team) {
       let teamColours = team.colours.hex; // Team colours hex array
 

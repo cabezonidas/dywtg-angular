@@ -1,4 +1,6 @@
-export default [
+import Team from "./interfaces/team";
+
+const Teams: Team[] = [
     {
         id: 24,
         name: "Anaheim Ducks",
@@ -256,3 +258,4 @@ export default [
         }
     }
 ];
+export default Teams;

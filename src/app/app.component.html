@@ -1,6 +1,6 @@
-<app-colour-changer [teams]="teams" [selectedTeamId]="selectedTeamId" hidden></app-colour-changer>
+<app-colour-changer [selectedTeamId]="selectedTeamId" hidden></app-colour-changer>
 <main class="wrapper">
-  <app-header [teams]="teams" [selectedTeamId]="selectedTeamId" (teamChanged)="onSelectTeamChanged($event)"></app-header>
+  <app-header [selectedTeamId]="selectedTeamId" (teamChanged)="onSelectTeamChanged($event)"></app-header>
 
   <div class="container">
     <section class="panel panel-next-fixtures">

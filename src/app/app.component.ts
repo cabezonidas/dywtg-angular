@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import teams from "./teamsList.js";
 import { getDateForUrl } from "./common/helpers";
 import { ApiService } from "./services/api.service.js";
 
@@ -9,8 +8,7 @@ import { ApiService } from "./services/api.service.js";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title: string = "Did you watch the game?";
-  teams: any[] = teams;
+  title = "Did you watch the game?";
   selectedTeamId: number = 23;
   nextFixtures: any[] = [];
   latestFixtures: any[] = [];

@@ -7,8 +7,6 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 })
 export class HeaderComponent {
   @Input()
-  teams: any[];
-  @Input()
   selectedTeamId: number;
   @Output()
   teamChanged = new EventEmitter();

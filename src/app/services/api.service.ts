@@ -13,7 +13,7 @@ export class ApiService {
   getSchedule = (scheduleModifier: ScheduleModifier) =>
     this.http.get<any>(`${this.baseUrl}${this.apiVersion}/schedule`, { params: this.buildQueryParams(scheduleModifier) });
 
-  getHighlights = (path: string) => this.http.get(`${this.baseUrl}${path}`);
+  getHighlights = (path: string) => this.http.get<any>(`${this.baseUrl}${path}`);
   
   getStandingsByDivision = () => this.http.get(`${this.baseUrl}${this.apiVersion}/standings/byDivision`);
 
