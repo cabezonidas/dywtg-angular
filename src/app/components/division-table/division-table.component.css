@@ -13,9 +13,9 @@ td,
 th {
   padding: 1em;
 }
-td,
+td:nth-child(1),
 th:nth-child(1),
-td,
+td:nth-child(2),
 th:nth-child(2) {
   text-align: left;
 }
