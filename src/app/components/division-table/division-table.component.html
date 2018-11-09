@@ -10,13 +10,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let entry of divisionTeams; let i = index" ngClass="{active: isCurrentTeam(entry)}">
-      <td>#{{i + 1}}</td>
-      <td>{{entry.team.name}}</td>
-      <td>{{entry.points}}</td>
-      <td>{{entry.leagueRecord.wins}}</td>
-      <td>{{entry.leagueRecord.losses}}</td>
-      <td>{{entry.leagueRecord.ot}}</td>
+    <tr
+      *ngFor="let entry of divisionTeams; let i = index"
+      [ngClass]="{ active: isCurrentTeam(entry) }"
+    >
+      <td>#{{ i + 1 }}</td>
+      <td>{{ entry.team.name }}</td>
+      <td>{{ entry.points }}</td>
+      <td>{{ entry.leagueRecord.wins }}</td>
+      <td>{{ entry.leagueRecord.losses }}</td>
+      <td>{{ entry.leagueRecord.ot }}</td>
     </tr>
   </tbody>
 </table>
