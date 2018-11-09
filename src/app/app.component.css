@@ -38,6 +38,12 @@
     flex-basis: 33.33333%;
   }
 
+  section h2 {
+    letter-spacing: 1.5px;
+    padding-bottom: 5px;
+    border-bottom: 5px solid rgba(255, 255, 255, 0.5);
+  }
+
   section:nth-child(1) {
     background-color: var(--primary-colour);
   }
