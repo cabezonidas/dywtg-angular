@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { getDateForUrl } from "./common/helpers";
 import { ApiService } from "./services/api.service.js";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import ScheduleModifier from "./interfaces/schedule-modifier.interface";
 
 @Component({
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   title = "Did you watch the game?";
   selectedTeamId: number = 23;
   nextFixtures$: Observable<any>;
+  divisionTeams$: Observable<any>;
   latestFixtures: any[] = [];
   divisionTeams: any[] = [];
   divisionName: string = "Division";
@@ -33,7 +34,22 @@ export class AppComponent implements OnInit {
       },
       fixturesLimit
     );
-    this.getDivisionTeams(teamId);
+
+    this.divisionTeams$ = this.api.getStandingsByDivision().pipe(
+      map(response => {
+        let result: any = null;
+        response.records.forEach(standing => {
+          standing.teamRecords.forEach(teamRecord => {
+            if (teamId === teamRecord.team.id) {
+              result = standing;
+            }
+          });
+        });
+        return result;        
+      }),
+      tap(standing => this.divisionName = `${standing.division.name} Division`), // Tap is for side effect
+      map(standing => standing.teamRecords)
+    );
 
     const next = <ScheduleModifier> {
       teamId: teamId,
@@ -75,21 +91,6 @@ export class AppComponent implements OnInit {
           });
       });
       this.latestFixtures = latestFixtures;
-    });
-  }
-
-  // Get the division of the selected team
-  getDivisionTeams(teamId: number) {
-    this.api.getStandingsByDivision(teamId).subscribe(response => {
-      response.records.forEach(standing => {
-        standing.teamRecords.forEach(teamRecord => {
-          if (teamId === teamRecord.team.id) {
-            this.divisionName = `${standing.division.name} Division`;
-            this.divisionTeams = standing.teamRecords;
-            return;
-          }
-        });
-      });
     });
   }
 

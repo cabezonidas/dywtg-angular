@@ -15,7 +15,7 @@ export class ApiService {
 
   getHighlights = (path: string) => this.http.get<any>(`${this.baseUrl}${path}`);
   
-  getStandingsByDivision = () => this.http.get(`${this.baseUrl}${this.apiVersion}/standings/byDivision`);
+  getStandingsByDivision = () => this.http.get<any>(`${this.baseUrl}${this.apiVersion}/standings/byDivision`);
 
   buildQueryParams = (source: Object): HttpParams => {
     let target: HttpParams = new HttpParams();
