@@ -8,7 +8,6 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FixturesListComponent } from "./components/fixtures-list/fixtures-list.component";
 import { FixturesListItemComponent } from "./components/fixtures-list-item/fixtures-list-item.component";
 import { DivisionTableComponent } from "./components/division-table/division-table.component";
-import { ApiService } from "./services/api.service";
 import { ColourChangerComponent } from "./components/colour-changer/colour-changer.component";
 
 @NgModule({
@@ -22,7 +21,6 @@ import { ColourChangerComponent } from "./components/colour-changer/colour-chang
     ColourChangerComponent
   ],
   imports: [BrowserModule, HttpClientModule],
-  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

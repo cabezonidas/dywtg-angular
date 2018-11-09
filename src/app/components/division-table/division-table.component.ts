@@ -7,7 +7,7 @@ import { Component, Input } from "@angular/core";
 })
 export class DivisionTableComponent {
   @Input()
-  divisionTeams: any[];
+  divisionTeams: any;
   @Input()
   selectedTeamId: number;
 
