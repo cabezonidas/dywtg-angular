@@ -9,6 +9,7 @@ import { FixturesListComponent } from "./components/fixtures-list/fixtures-list.
 import { FixturesListItemComponent } from "./components/fixtures-list-item/fixtures-list-item.component";
 import { DivisionTableComponent } from "./components/division-table/division-table.component";
 import { ColourChangerComponent } from "./components/colour-changer/colour-changer.component";
+import { HighlightsComponent } from './components/highlights/highlights.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ColourChangerComponent } from "./components/colour-changer/colour-chang
     FixturesListComponent,
     FixturesListItemComponent,
     DivisionTableComponent,
-    ColourChangerComponent
+    ColourChangerComponent,
+    HighlightsComponent
   ],
   imports: [BrowserModule, HttpClientModule],
   bootstrap: [AppComponent]

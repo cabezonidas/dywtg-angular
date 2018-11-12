@@ -14,7 +14,7 @@
       <h2>
         <i class="fas fa-history"></i> Latest Results
       </h2>
-      <app-fixtures-list [fixtures]="latestFixtures" [showResults]="true"></app-fixtures-list>
+      <app-fixtures-list  [fixtures]="lastFixtures$ | async" [showResults]="true" [currentTeamId]="selectedTeamId"></app-fixtures-list>
     </section>
 
     <section class="panel panel-division-table">
