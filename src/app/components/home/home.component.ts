@@ -17,32 +17,13 @@ export class HomeComponent implements OnInit {
   nextFixtures$: Observable<ScheduleDate[]>;
   lastFixtures$: Observable<ScheduleDate[]>;
   divisionTeams$: Observable<any>;
-  divisionName: string = "Division";
-  teamId: number;
 
   constructor(private api: ApiService, private route: ActivatedRoute) { 
     this.selectedTeamId$ = this.route.params.pipe(map(p => p.id));
   }
 
   ngOnInit () {
-    this.divisionTeams$ = this.selectedTeamId$.pipe(
-      switchMap(teamId => this.api.getStandingsByDivision().pipe(
-        map(response => {
-          let result: any = null;
-          response.records.forEach(standing => {
-            standing.teamRecords.forEach(teamRecord => {
-              if (`${teamId}` === `${teamRecord.team.id}`) {
-                result = standing;
-              }
-            });
-          });
-          return result;        
-        }),
-        filter(standing => !!standing),
-        tap(standing => this.divisionName = `${standing.division.name} Division`), // Tap is for side effect
-        map(standing => standing.teamRecords)
-      ))
-    );
+    this.divisionTeams$ = this.api.getStandingsByDivision();
       
     this.nextFixtures$ = this.selectedTeamId$.pipe(
       switchMap(teamId => this.api.getScheduleNextYear(teamId).pipe(
