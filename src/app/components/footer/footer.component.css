@@ -6,6 +6,10 @@ footer {
   justify-content: space-between;
   font-size: 0.9rem;
   color: #eae8ff;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 a {
   text-decoration: none;

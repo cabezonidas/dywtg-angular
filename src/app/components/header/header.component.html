@@ -2,10 +2,10 @@
   <span class="logo-container">
     <img src="assets/logo-sm.png">
   </span>
-  <select (change)="onSelectTeamChanged($event)" [value]="selectedTeamId">
+  <select (change)="onSelectTeamChanged($event)">
     <option value="">Select a Team...</option>
-    <option *ngFor="let team of teams" [value]="team.id">
-      {{team.name}}
+    <option *ngFor="let team of teams" [value]="team.id" >
+      <a routerLink="/test">{{team.name}}</a>
     </option>
   </select>
   <span class="header-subtitle">Snapshot</span>

@@ -1,0 +1,23 @@
+<app-colour-changer [selectedTeamId]="selectedTeamId$ | async" hidden></app-colour-changer>
+<div class="container" *ngIf="selectedTeamId$ | async">
+  <section class="panel panel-next-fixtures">
+    <h2>
+      <i class="far fa-calendar-alt"></i> Next Fixtures
+    </h2>
+    <app-fixtures-list [fixtures]="nextFixtures$ | async"></app-fixtures-list>
+  </section>
+
+  <section class="panel panel-latest-results">
+    <h2>
+      <i class="fas fa-history"></i> Latest Results
+    </h2>
+    <app-fixtures-list  [fixtures]="lastFixtures$ | async" [showResults]="true" [currentTeamId]="selectedTeamId$ | async"></app-fixtures-list>
+  </section>
+
+  <section class="panel panel-division-table">
+    <h2>
+      <i class="fas fa-trophy"></i> {{divisionName}}
+    </h2>
+    <app-division-table [divisionTeams]="divisionTeams$ | async" [selectedTeamId]="selectedTeamId$ | async"></app-division-table>
+  </section>
+</div>

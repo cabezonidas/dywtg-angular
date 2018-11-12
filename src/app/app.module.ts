@@ -10,6 +10,16 @@ import { FixturesListItemComponent } from "./components/fixtures-list-item/fixtu
 import { DivisionTableComponent } from "./components/division-table/division-table.component";
 import { ColourChangerComponent } from "./components/colour-changer/colour-changer.component";
 import { HighlightsComponent } from './components/highlights/highlights.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+
+const routes: Routes = [
+  {
+    path: ':id',
+    component: HomeComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
@@ -20,9 +30,14 @@ import { HighlightsComponent } from './components/highlights/highlights.componen
     FixturesListItemComponent,
     DivisionTableComponent,
     ColourChangerComponent,
-    HighlightsComponent
+    HighlightsComponent,
+    HomeComponent
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
