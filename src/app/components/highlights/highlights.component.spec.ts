@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HighlightsComponent } from './highlights.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HighlightsComponent', () => {
   let component: HighlightsComponent;
@@ -8,7 +9,10 @@ describe('HighlightsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HighlightsComponent ]
+      declarations: [ HighlightsComponent ],
+      imports: [
+        HttpClientModule
+      ]
     })
     .compileComponents();
   }));

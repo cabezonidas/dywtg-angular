@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FixturesListItemComponent } from './fixtures-list-item.component';
+import { HighlightsComponent } from '../highlights/highlights.component';
 
 describe('FixturesListItemComponent', () => {
   let component: FixturesListItemComponent;
@@ -8,7 +9,7 @@ describe('FixturesListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FixturesListItemComponent ]
+      declarations: [ FixturesListItemComponent, HighlightsComponent ]
     })
     .compileComponents();
   }));

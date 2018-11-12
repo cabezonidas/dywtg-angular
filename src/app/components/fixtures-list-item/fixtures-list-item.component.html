@@ -1,4 +1,4 @@
-<li>
+<li *ngIf="fixture">
   <p>{{formatDateToString(fixture.gameDate)}}</p>
   <p>{{getTeamString(fixture)}}</p>
   <app-highlights [game]="fixture" [currentTeam]="currentTeamId" *ngIf="showResults"></app-highlights>

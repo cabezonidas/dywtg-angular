@@ -1,21 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import Game from 'src/app/interfaces/game';
 import { ApiService } from 'src/app/services/api.service';
-import { map, filter, tap } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-highlights',
   templateUrl: './highlights.component.html',
   styleUrls: ['./highlights.component.css']
 })
-export class HighlightsComponent implements OnInit {
+export class HighlightsComponent implements OnChanges {
 
   @Input() game: Game;
   @Input() currentTeam: number;
   highlightVideo: string;
+  result: string;
   constructor(private api: ApiService) { }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.api.getHighlights(this.game.content.link).pipe(
       map(gameHighlights => gameHighlights.media.epg.find(epg => epg.title === 'Extended Highlights')),
       filter(epg => !!epg && !!epg.items && epg.items.length > 0),
@@ -23,6 +24,7 @@ export class HighlightsComponent implements OnInit {
       filter(playbacks => !!playbacks && playbacks.length > 0),
     ).subscribe(playbacks => {
       this.highlightVideo = playbacks.reverse()[0].url;
+      this.result = this.getGameResultsData();
     })
   }
   getResultString(team1Score, team2Score) {
