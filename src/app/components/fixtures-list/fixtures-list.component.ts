@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import Game from "src/app/interfaces/game";
+import ScheduleDate from "src/app/interfaces/schedule-date";
 
 @Component({
   selector: "app-fixtures-list",
@@ -8,7 +9,7 @@ import Game from "src/app/interfaces/game";
 })
 export class FixturesListComponent {
   @Input()
-  fixtures: Game[];
+  fixtures: ScheduleDate[];
 
   @Input()
   currentTeamId: number;

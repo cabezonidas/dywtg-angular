@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import ScheduleModifier from "../interfaces/schedule-modifier.interface";
 import Schedule from "../interfaces/schedule";
 import GameHighlights from "../interfaces/game-highlights";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -10,6 +11,10 @@ import GameHighlights from "../interfaces/game-highlights";
 export class ApiService {
   baseUrl: string = "https://statsapi.web.nhl.com";
   apiVersion: string = "/api/v1";
+
+  public selectedTeamIdSource = new BehaviorSubject<any>(null);
+  public selectedTeamId$ = this.selectedTeamIdSource.asObservable();
+
   constructor(private http: HttpClient) {}
 
   getSchedule = (scheduleModifier: ScheduleModifier) =>

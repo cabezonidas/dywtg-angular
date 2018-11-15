@@ -1,23 +1,25 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import Game from 'src/app/interfaces/game';
 import { ApiService } from 'src/app/services/api.service';
 import { map, filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-highlights',
   templateUrl: './highlights.component.html',
   styleUrls: ['./highlights.component.css']
 })
-export class HighlightsComponent implements OnChanges {
+export class HighlightsComponent implements OnChanges, OnDestroy {
 
   @Input() game: Game;
   @Input() currentTeam: number;
   highlightVideo: string;
   result: string;
+  highlightsSub = new Subscription();
   constructor(private api: ApiService) { }
 
   ngOnChanges() {
-    this.api.getHighlights(this.game.content.link).pipe(
+    this.highlightsSub = this.api.getHighlights(this.game.content.link).pipe(
       map(gameHighlights => gameHighlights.media.epg.find(epg => epg.title === 'Extended Highlights')),
       filter(epg => !!epg && !!epg.items && epg.items.length > 0),
       map(epg => epg.items[0].playbacks),
@@ -50,6 +52,10 @@ export class HighlightsComponent implements OnChanges {
     return homeTeamId === this.currentTeam
       ? this.getResultString(homeTeamScore, awayTeamScore)
       : this.getResultString(awayTeamScore, homeTeamScore);
+  }
+
+  ngOnDestroy() {
+    this.highlightsSub.unsubscribe();
   }
 
 }

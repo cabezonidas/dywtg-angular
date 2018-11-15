@@ -19,10 +19,14 @@ export class HomeComponent implements OnInit {
   divisionTeams$: Observable<any>;
 
   constructor(private api: ApiService, private route: ActivatedRoute) { 
-    this.selectedTeamId$ = this.route.params.pipe(map(p => p.id));
+    this.selectedTeamId$ = this.route.params.pipe(
+      map(p => p.id),
+      tap(teamId => this.api.selectedTeamIdSource.next(teamId))
+    );
   }
 
   ngOnInit () {
+
     this.divisionTeams$ = this.api.getStandingsByDivision();
       
     this.nextFixtures$ = this.selectedTeamId$.pipe(
