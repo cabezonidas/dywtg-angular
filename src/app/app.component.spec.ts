@@ -4,12 +4,14 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { RouterModule } from "@angular/router";
 import { APP_BASE_HREF } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
 describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent, HeaderComponent, FooterComponent],
       imports: [
-        RouterModule.forRoot([])
+        RouterModule.forRoot([]),
+        HttpClientModule
       ],
       providers: [
         { provide: APP_BASE_HREF, useValue : '/' }

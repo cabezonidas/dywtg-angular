@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { HeaderComponent } from "./header.component";
 import { APP_BASE_HREF } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
 
 describe("HeaderComponent", () => {
   let component: HeaderComponent;
@@ -13,7 +14,8 @@ describe("HeaderComponent", () => {
       declarations: [HeaderComponent],
       imports: [
         RouterModule.forRoot([]),
-        ],
+        HttpClientModule  
+      ],
       providers: [
         { provide: APP_BASE_HREF, useValue : '/' }
       ]
